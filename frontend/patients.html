@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patients - Doctor Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Doctor Management System</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="appointments.html">Appointments</a></li>
+          <li><a href="patients.html" class="active">Patients</a></li>
+        </ul>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Patient Registration Form -->
+    <div class="card">
+      <h2>Patient Registration</h2>
+      <form id="patient-form" onsubmit="handlePatientSubmit(event)">
+        <input type="hidden" id="patient-id">
+        
+        <div class="form-group">
+          <label for="patient-name">Full Name *</label>
+          <input type="text" id="patient-name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="patient-email">Email *</label>
+            <input type="email" id="patient-email" required>
+          </div>
+          <div class="form-group">
+            <label for="patient-phone">Phone *</label>
+            <input type="tel" id="patient-phone" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="patient-dob">Date of Birth *</label>
+          <input type="date" id="patient-dob" required>
+        </div>
+
+        <div class="form-group">
+          <label for="patient-medical-history">Medical History</label>
+          <textarea id="patient-medical-history" rows="3" placeholder="Any medical conditions, allergies, current medications..."></textarea>
+        </div>
+
+        <div class="flex gap-1">
+          <button type="submit" class="btn btn-primary">Register Patient</button>
+          <button type="button" class="btn btn-secondary" onclick="resetPatientForm()">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Patients List -->
+    <div class="card">
+      <div class="flex justify-between align-center mb-2">
+        <h2>Registered Patients</h2>
+      </div>
+
+      <!-- Search -->
+      <div class="search-filter">
+        <input type="text" id="search-input" placeholder="Search patients by name or email..." onkeyup="filterPatients()">
+      </div>
+
+      <!-- Patients Table -->
+      <div class="table-container">
+        <table id="patients-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>Date of Birth</th>
+              <th>Medical History</th>
+              <th>Registered</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="patients-tbody">
+            <!-- Patients will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Patient Detail Modal -->
+  <div id="patient-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Patient Details</h2>
+        <span class="close-btn" onclick="closePatientModal()">×</span>
+      </div>
+      <div id="patient-details">
+        <!-- Patient details will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/patients.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors - Doctor Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Doctor Management System</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="doctors.html" class="active">Doctors</a></li>
+          <li><a href="appointments.html">Appointments</a></li>
+          <li><a href="patients.html">Patients</a></li>
+        </ul>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="card">
+      <div class="flex justify-between align-center mb-2">
+        <h2>Our Doctors</h2>
+        <button class="btn btn-primary" onclick="openAddDoctorModal()">➕ Add Doctor</button>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="search-filter">
+        <input type="text" id="search-input" placeholder="Search doctors by name..." onkeyup="filterDoctors()">
+        <select id="specialty-filter" onchange="filterDoctors()">
+          <option value="">All Specialties</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="Dermatology">Dermatology</option>
+          <option value="Pediatrics">Pediatrics</option>
+          <option value="Neurology">Neurology</option>
+          <option value="Orthopedics">Orthopedics</option>
+          <option value="General Practice">General Practice</option>
+        </select>
+      </div>
+
+      <!-- Doctors Grid -->
+      <div id="doctors-grid" class="doctors-grid">
+        <!-- Doctors will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Doctor Modal -->
+  <div id="doctor-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Add Doctor</h2>
+        <span class="close-btn" onclick="closeDoctorModal()">×</span>
+      </div>
+      <form id="doctor-form" onsubmit="handleDoctorSubmit(event)">
+        <input type="hidden" id="doctor-id">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="doctor-name">Name *</label>
+            <input type="text" id="doctor-name" required>
+          </div>
+          <div class="form-group">
+            <label for="doctor-specialty">Specialty *</label>
+            <select id="doctor-specialty" required>
+              <option value="">Select specialty</option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Dermatology">Dermatology</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Orthopedics">Orthopedics</option>
+              <option value="General Practice">General Practice</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="doctor-email">Email *</label>
+            <input type="email" id="doctor-email" required>
+          </div>
+          <div class="form-group">
+            <label for="doctor-phone">Phone *</label>
+            <input type="tel" id="doctor-phone" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="doctor-experience">Experience (years)</label>
+            <input type="number" id="doctor-experience" min="0" value="0">
+          </div>
+          <div class="form-group">
+            <label for="doctor-rating">Rating</label>
+            <input type="number" id="doctor-rating" min="0" max="5" step="0.1" value="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="doctor-availability">Availability</label>
+          <input type="text" id="doctor-availability" placeholder="e.g., Mon-Fri, 9AM-5PM">
+        </div>
+
+        <div class="form-group">
+          <label for="doctor-image">Image URL</label>
+          <input type="url" id="doctor-image" placeholder="https://...">
+        </div>
+
+        <div class="flex gap-1">
+          <button type="submit" class="btn btn-primary">Save Doctor</button>
+          <button type="button" class="btn btn-secondary" onclick="closeDoctorModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/doctors.js"></script>
+</body>
+</html>
