@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Management System - Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Doctor Management System</a>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Dashboard</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="appointments.html">Appointments</a></li>
+          <li><a href="patients.html">Patients</a></li>
+        </ul>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1>Welcome to Doctor Management System</h1>
+      <p>Professional healthcare management made easy</p>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="icon">👨‍⚕️</div>
+        <h3 id="total-doctors">0</h3>
+        <p>Total Doctors</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">📅</div>
+        <h3 id="total-appointments">0</h3>
+        <p>Appointments</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">👥</div>
+        <h3 id="total-patients">0</h3>
+        <p>Registered Patients</p>
+      </div>
+      <div class="stat-card">
+        <div class="icon">✅</div>
+        <h3 id="pending-appointments">0</h3>
+        <p>Pending Appointments</p>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card">
+      <h2>Quick Actions</h2>
+      <div class="flex gap-1" style="flex-wrap: wrap;">
+        <a href="appointments.html" class="btn btn-primary">Book Appointment</a>
+        <a href="doctors.html" class="btn btn-secondary">View Doctors</a>
+        <a href="patients.html" class="btn btn-secondary">Register Patient</a>
+      </div>
+    </div>
+
+    <!-- Featured Doctors -->
+    <div class="card">
+      <h2>Featured Doctors</h2>
+      <div id="featured-doctors" class="doctors-grid">
+        <!-- Doctors will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

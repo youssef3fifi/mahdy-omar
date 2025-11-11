@@ -1,0 +1,26 @@
+{
+  "name": "doctor-management-system",
+  "version": "1.0.0",
+  "description": "Full Stack Doctor Management System for AWS EC2 deployment",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "keywords": [
+    "doctor",
+    "management",
+    "healthcare",
+    "appointment"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

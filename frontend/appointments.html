@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments - Doctor Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Doctor Management System</a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="doctors.html">Doctors</a></li>
+          <li><a href="appointments.html" class="active">Appointments</a></li>
+          <li><a href="patients.html">Patients</a></li>
+        </ul>
+      </nav>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Appointment Booking Form -->
+    <div class="card">
+      <h2>Book New Appointment</h2>
+      <form id="appointment-form" onsubmit="handleAppointmentSubmit(event)">
+        <input type="hidden" id="appointment-id">
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointment-doctor">Select Doctor *</label>
+            <select id="appointment-doctor" required>
+              <option value="">Choose a doctor</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="appointment-status">Status</label>
+            <select id="appointment-status">
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="appointment-patient-name">Patient Name *</label>
+          <input type="text" id="appointment-patient-name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointment-patient-email">Patient Email *</label>
+            <input type="email" id="appointment-patient-email" required>
+          </div>
+          <div class="form-group">
+            <label for="appointment-patient-phone">Patient Phone *</label>
+            <input type="tel" id="appointment-patient-phone" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="appointment-date">Date *</label>
+            <input type="date" id="appointment-date" required>
+          </div>
+          <div class="form-group">
+            <label for="appointment-time">Time *</label>
+            <input type="time" id="appointment-time" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="appointment-notes">Notes</label>
+          <textarea id="appointment-notes" rows="3" placeholder="Any special requirements or notes..."></textarea>
+        </div>
+
+        <div class="flex gap-1">
+          <button type="submit" class="btn btn-primary">Book Appointment</button>
+          <button type="button" class="btn btn-secondary" onclick="resetAppointmentForm()">Clear Form</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Appointments List -->
+    <div class="card">
+      <div class="flex justify-between align-center mb-2">
+        <h2>All Appointments</h2>
+      </div>
+
+      <!-- Filter -->
+      <div class="search-filter">
+        <select id="doctor-filter" onchange="filterAppointments()">
+          <option value="">All Doctors</option>
+        </select>
+        <select id="status-filter" onchange="filterAppointments()">
+          <option value="">All Statuses</option>
+          <option value="pending">Pending</option>
+          <option value="confirmed">Confirmed</option>
+          <option value="completed">Completed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <input type="date" id="date-filter" onchange="filterAppointments()">
+      </div>
+
+      <!-- Appointments Table -->
+      <div class="table-container">
+        <table id="appointments-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Doctor</th>
+              <th>Patient</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="appointments-tbody">
+            <!-- Appointments will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/appointments.js"></script>
+</body>
+</html>
